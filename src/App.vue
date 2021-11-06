@@ -46,12 +46,12 @@ export default {
     onSubmitForm(data) {
       const newObj = {
         ...data,
-        id: String(Math.random()),
+        id: Math.random(),
       };
 
       this.$set(this.list, newObj.id, newObj);
     },
-  }
+  },
 }
 </script>
 

@@ -3,9 +3,7 @@
     <ElCard :header="header">
       <template v-if="!isEmpty">
         <div class="list-item" v-for="(item, prop) in list" :key="prop">
-          <span class="budget-comment">{{ item.commentary }}</span>
-          <span class="budget-value">{{ item.value }}</span>
-          <ElButton type="danger" size="mini" @click="deleteItem(item.id)">Delete</ElButton>
+          <BudgetListItem :value="item.value" :commentary="item.commentary" :deleteItemId="item.id"/>
         </div>
       </template>
       <ElAlert v-else type="info" effect="dark" show-icon :closable="false" :title="emptyTitle">
@@ -15,8 +13,14 @@
 </template>
 
 <script>
+import BudgetListItem from "@/components/BudgetListItem";
+
 export default {
   name: "BudgetList",
+  components: {BudgetListItem},
+  comments: {
+    BudgetListItem,
+  },
   props: {
     list: {
       type: Object,
@@ -35,8 +39,11 @@ export default {
   methods: {
     deleteItem(id) {
       this.$emit('deleteItem', id);
-    }
-  }
+    },
+  },
+  created() {
+    this.$root.$refs.BudgetList_component = this;
+  },
 };
 </script>
 
@@ -44,17 +51,5 @@ export default {
 .budget-list-wrap {
   max-width: 500px;
   margin: 0 auto;
-}
-
-.list-item {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-}
-
-.budget-value {
-  font-weight: 400;
-  margin-left: auto;
-  margin-right: 20px;
 }
 </style>
