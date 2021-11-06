@@ -28,7 +28,7 @@ export default {
        },
        2: {
          type: 'OUTCOME',
-         value: 120,
+         value: 150,
          commentary: 'Some comment',
          id: 2,
        }
@@ -44,6 +44,14 @@ export default {
       this.$delete(this.list, id);
     },
     onSubmitForm(data) {
+      if (data.type === "OUTCOME") {
+        if (Math.sign(data.value) >= 0) {
+          data.value = -data.value;
+        }
+      } else {
+        data.value = Math.abs(data.value);
+      }
+
       const newObj = {
         ...data,
         id: Math.random(),
