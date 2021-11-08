@@ -25,7 +25,8 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      this.$root.$refs.BudgetList_component.deleteItem(id);
+      if(confirm('Delete Item?'))
+        this.$root.$refs.BudgetList_component.deleteItem(id);
     },
   },
 }

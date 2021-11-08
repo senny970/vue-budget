@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header/>
     <Form @submitForm="onSubmitForm" />
     <TotalBalance :total="totalBalance"/>
     <BudgetList :list="list" @deleteItem="onDeleteItem"/>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+import Header from "@/components/Header";
 import BudgetList from "@/components/BudgetList";
 import TotalBalance from "@/components/TotalBalance";
 import Form from "@/components/Form";
@@ -14,6 +16,7 @@ import Form from "@/components/Form";
 export default {
   name: 'App',
   components: {
+    Header,
     BudgetList,
     TotalBalance,
     Form,
@@ -70,6 +73,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>

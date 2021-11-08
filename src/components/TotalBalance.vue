@@ -25,8 +25,14 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: "LuckiestGuy-Regular";
+  src: url("../fonts/LuckiestGuy-Regular.ttf") format("truetype");
+}
+
 .total-value {
-  font-size: 26px;
+  font-size: 30px;
+  font-family: 'LuckiestGuy-Regular', cursive;
   text-transform: uppercase;
   padding: 20px;
   text-align: center;
@@ -39,5 +45,4 @@ export default {
 .green {
   color: green;
 }
-
 </style>
