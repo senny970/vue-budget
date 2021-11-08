@@ -30,7 +30,7 @@ export default {
          id: 1,
        },
        2: {
-         type: 'OUTCOME',
+         type: 'INCOME',
          value: 150,
          commentary: 'Some comment',
          id: 2,

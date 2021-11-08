@@ -1,13 +1,20 @@
 <template>
   <div class="budget-item">
     <span class="budget-comment">{{ commentary }}</span>
-    <span class="budget-value">{{ value }}</span>
+    <span class="budget-value">{{ Math.abs(value) }}</span>
+    <template v-if="type === 'INCOME'">
+      <span class="el-icon-bottom"></span>
+    </template>
+    <template v-else>
+      <span class="el-icon-top"></span>
+    </template>
     <ElButton type="danger" size="mini" @click="deleteItem(deleteItemId, deleteItemCommentary)">Delete</ElButton>
   </div>
 </template>
 
 <script>
 import swal from 'sweetalert';
+
 export default {
   name: "BudgetListItem",
   props: {
@@ -27,6 +34,10 @@ export default {
       type: String,
       default: 'item',
     },
+    type: {
+      type: String,
+      default: 'INCOME',
+    },
   },
   methods: {
     deleteItem(id, comment) {
@@ -43,8 +54,6 @@ export default {
 
             }
           });
-      //if(confirm('Delete Item?'))
-        //this.$root.$refs.BudgetList_component.deleteItem(id);
     },
   },
 }
@@ -60,10 +69,11 @@ export default {
 .budget-value {
   font-weight: 400;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
-.swal-title {
-  font-size: 20px !important;
+.el-icon-top,
+.el-icon-bottom {
+  margin-right: 5px;
 }
 </style>
