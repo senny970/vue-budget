@@ -73,5 +73,3 @@ export default {
   margin-top: 60px;
 }
 </style>
-
-//20:52
