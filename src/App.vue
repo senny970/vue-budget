@@ -50,7 +50,7 @@ export default {
        5: {
          type: 'OUTCOME',
          value: 30,
-         commentary: 'Some comment 4',
+         commentary: 'Some comment 5',
          id: 5,
        },
      },

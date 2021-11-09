@@ -21,21 +21,36 @@
 <script>
 export default {
   name: "Form",
-  data: () => ({
-    formData: {
-      type: 'INCOME',
-      commentary: '',
-      value: 0,
-    },
-    rules: {
-      type: [{ required: true, message: 'Please select type', trigger: "blur",}],
-      commentary: [{ required: true, message: 'Please input comment', trigger: "blur",}],
-      value: [
-          { required: true, message: 'Please input value', trigger: "blur",},
-          { type: 'number', message: 'Value must be number', trigger: "blur",}
-      ],
+  data() {
+    let validateValue = (rule, value, callback) => {
+      if (!value || value <= 0) {
+        return callback(new Error('Please input the value'));
+      }
+      setTimeout(() => {
+        if (!Number.isInteger(value)) {
+          callback(new Error('Please input digits'));
+        } else {
+          callback();
+        }
+      }, 500);
+    };
+
+    return {
+      formData: {
+        type: 'INCOME',
+        commentary: '',
+        value: 0,
+      },
+      rules: {
+        type: [{required: true, message: 'Please select type', trigger: "blur",}],
+        commentary: [{required: true, message: 'Please input comment', trigger: "blur",}],
+        value: [
+          {validator: validateValue, trigger: 'blur'},
+
+        ],
+      }
     }
-  }),
+  },
   methods: {
     onSubmit() {
       this.$refs.addItemForm.validate(valid => {
@@ -44,6 +59,11 @@ export default {
           this.$refs.addItemForm.resetFields();
         }
       })
+    },
+    validateValue(rule, value, callback) {
+      if (!value || value === 0) {
+        callback(new Error('Please input the value'));
+      }
     },
   },
 };
