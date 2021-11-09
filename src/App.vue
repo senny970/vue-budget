@@ -26,15 +26,33 @@ export default {
        1: {
          type: 'INCOME',
          value: 100,
-         commentary: 'Some comment',
+         commentary: 'Some comment 1',
          id: 1,
        },
        2: {
          type: 'INCOME',
          value: 150,
-         commentary: 'Some comment',
+         commentary: 'Some comment 2',
          id: 2,
-       }
+       },
+       3: {
+         type: 'OUTCOME',
+         value: 100,
+         commentary: 'Some comment 3',
+         id: 3,
+       },
+       4: {
+         type: 'INCOME',
+         value: 120,
+         commentary: 'Some comment 4',
+         id: 4,
+       },
+       5: {
+         type: 'OUTCOME',
+         value: 30,
+         commentary: 'Some comment 4',
+         id: 5,
+       },
      },
   }),
   computed: {

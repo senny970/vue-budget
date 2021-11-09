@@ -8,7 +8,7 @@
     <template v-else>
       <span class="el-icon-top"></span>
     </template>
-    <ElButton type="danger" size="mini" @click="deleteItem(deleteItemId, deleteItemCommentary)">Delete</ElButton>
+    <ElButton class="el-icon-delete" type="danger" size="mini" @click="deleteItem(deleteItemId, deleteItemCommentary)"></ElButton>
   </div>
 </template>
 

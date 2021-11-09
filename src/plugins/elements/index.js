@@ -10,7 +10,7 @@ import {
     Input,
     Select,
     Option,
-    Alert
+    Alert, ButtonGroup
 } from 'element-ui';
 
 const elements = [
@@ -21,7 +21,8 @@ const elements = [
     Input,
     Select,
     Option,
-    Alert
+    Alert,
+    ButtonGroup
 ];
 
 locale.use(lang);
