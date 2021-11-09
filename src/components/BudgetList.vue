@@ -54,22 +54,13 @@ export default {
       type: Object,
       default: () => ({}),
     },
-    sortIncome: {
-      type: Boolean,
-      default: false,
-    },
-    sortOutcome: {
-      type: Boolean,
-      default: false,
-    },
-    sortAll: {
-      type: Boolean,
-      default: true,
-    }
   },
   data: () => ({
     header: 'Budget List',
     emptyTitle: 'Empty List',
+    sortIncome: false,
+    sortOutcome: false,
+    sortAll: true,
   }),
   computed: {
     isEmpty() {

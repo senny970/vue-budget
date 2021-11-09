@@ -45,7 +45,6 @@ export default {
         commentary: [{required: true, message: 'Please input comment', trigger: "blur",}],
         value: [
           {validator: validateValue, trigger: 'blur'},
-
         ],
       }
     }
