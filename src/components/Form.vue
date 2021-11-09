@@ -26,13 +26,12 @@ export default {
       if (!value || value <= 0) {
         return callback(new Error('Please input the value'));
       }
-      setTimeout(() => {
-        if (!Number.isInteger(value)) {
-          callback(new Error('Please input digits'));
-        } else {
-          callback();
-        }
-      }, 500);
+
+      if (!Number.isInteger(value)) {
+        callback(new Error('Please input digits'));
+      } else {
+        callback();
+      }
     };
 
     return {
