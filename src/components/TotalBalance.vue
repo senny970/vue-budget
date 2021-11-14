@@ -1,26 +1,28 @@
 <template>
   <div>
-    <template v-if="total > 1">
-      <div class="total-value green">Balance: {{ total }}</div>
+    <template v-if="totalBalance > 1">
+      <div class="total-value green">Balance: {{ totalBalance }}</div>
     </template>
-    <template v-else-if="total < 0">
-      <div class="total-value red">Balance: {{ total }}</div>
+    <template v-else-if="totalBalance < 0">
+      <div class="total-value red">Balance: {{ totalBalance }}</div>
     </template>
     <template v-else>
-      <div class="total-value">Balance: {{ total }}</div>
+      <div class="total-value">Balance: {{ totalBalance }}</div>
     </template>
   </div>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "TotalBalance",
-  props: {
-    total: {
-      type: Number,
-      default: 0,
+  computed: {
+    ...mapGetters('budget', ['budgetList']),
+    totalBalance() {
+      return Object.values(this.budgetList).reduce((acc, item) => acc + item.value, 0)
     },
-  },
+  }
 };
 </script>
 

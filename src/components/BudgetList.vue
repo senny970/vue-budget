@@ -7,7 +7,7 @@
           <el-button type="primary" icon="el-icon-top" @click="setSortOutcome"></el-button>
           <el-button type="primary" @click="setSortAll">All</el-button>
         </el-button-group>
-        <div class="list-item" v-for="(item, prop) in list" :key="prop">
+        <div class="list-item" v-for="(item, prop) in budgetList" :key="prop">
           <template v-if="sortIncome && item.type === 'INCOME'">
             <BudgetListItem
                 :value="item.value"
@@ -42,18 +42,14 @@
 
 <script>
 import BudgetListItem from "@/components/BudgetListItem";
+import {mapGetters} from 'vuex';
+import {mapActions} from 'vuex';
 
 export default {
   name: "BudgetList",
   components: {BudgetListItem},
   comments: {
     BudgetListItem,
-  },
-  props: {
-    list: {
-      type: Object,
-      default: () => ({}),
-    },
   },
   data: () => ({
     header: 'Budget List',
@@ -63,14 +59,13 @@ export default {
     sortAll: true,
   }),
   computed: {
+    ...mapGetters('budget', ['budgetList']),
     isEmpty() {
-      return !Object.keys(this.list).length;
-    }
+      return !Object.keys(this.budgetList).length;
+    },
   },
   methods: {
-    deleteItem(id) {
-      this.$emit('deleteItem', id);
-    },
+    ...mapActions('budget', ['removeBudgetItem']),
     setSortIncome() {
       this.sortIncome = true;
       this.sortOutcome = false;
@@ -86,9 +81,6 @@ export default {
       this.sortOutcome = false;
       this.sortIncome = false;
     },
-  },
-  created() {
-    this.$root.$refs.BudgetList_component = this;
   },
 };
 </script>

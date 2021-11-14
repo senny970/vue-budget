@@ -8,12 +8,18 @@
     <template v-else>
       <span class="el-icon-top"></span>
     </template>
-    <ElButton class="el-icon-delete" type="danger" size="mini" @click="deleteItem(deleteItemId, deleteItemCommentary)"></ElButton>
+    <ElButton
+        class="el-icon-delete"
+        type="danger"
+        size="mini"
+        @click="deleteItem(deleteItemId, deleteItemCommentary)">
+    </ElButton>
   </div>
 </template>
 
 <script>
 import swal from 'sweetalert';
+import {mapActions} from 'vuex';
 
 export default {
   name: "BudgetListItem",
@@ -40,6 +46,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions('budget', ['removeBudgetItem']),
     deleteItem(id, comment) {
       swal({
         title: `Delete ${comment} item?`,
@@ -47,11 +54,10 @@ export default {
       })
           .then((willDelete) => {
             if (willDelete) {
-              this.$root.$refs.BudgetList_component.deleteItem(id);
+              this.removeBudgetItem(id);
               swal(`${comment} has been deleted!`, {
                 icon: "success",
               });
-
             }
           });
     },
