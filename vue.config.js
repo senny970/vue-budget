@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/vue-budget/'
+    publicPath: '/vue-budget/dist/'
 }
