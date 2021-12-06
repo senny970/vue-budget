@@ -1,4 +1,7 @@
-# budget-app
+# Budget-app
+
+## GitHub Pages
+[Budget-app](https://senny970.github.io/vue-budget/dist "Budget-app")
 
 ## Project setup
 ```
